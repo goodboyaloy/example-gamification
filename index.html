@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.11 Example Gamification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-white w-full h-screen max-w-lg mx-auto rounded shadow">
+        <div class="flex flex-col h-full">
+            <div class="flex flex-col mx-auto gap-5">
+                <div class="p-10 gap-5">
+                    <img src="https://crystaltomato.com/main/wp-content/uploads/2021/08/Logo.gif" class="h-6 w-auto"/>
+                </div>
+                <div class="flex flex-row gap-10 mx-auto text-gray-500 mb-5">
+                    <a href="https://crystaltomato.com/" target="_blank">Home</a>
+                    <a href="https://buy.crystaltomato.com/" target="_blank">Shop Sale</a>
+                    <a href="https://crystaltomato.com/skin-whitening-supplement" target="_blank">FAQ</a>
+                </div>
+            </div>
+            <div class="bg-gray-200 px-6 py-2 text-sm flex items-center justify-center flex-0">
+                <span class="text-gray-700 uppercase font-bold">Win 11% OFF storewide</span>
+            </div>
+            <div id="start-game" class="py-10 mx-auto w-full max-w-lg flex flex-col gap-10 items-center bg-gray-50 shadow h-full justify-center my-auto">
+                <span class="font-bold text-2xl text-center">CrystalTomato® 11.11 Sale!</span>
+
+                <img src="https://cdn.shopify.com/s/files/1/0509/6079/3772/files/9.9_banner_website-1.jpg?v=1662454513" class=""/>
+                <div class="flex flex-col items-center gap-5 w-full px-10">
+                    <span>Play game to win 11% OFF your order</span>
+                    <button id="start-game-button" class="bg-gray-500 w-full text-white rounded px-6 py-2 uppercase hover:bg-gray-700">Start Game</button>
+                </div>
+            </div>
+            <div id="game" class="bg-gray-50 rounded max-w-lg w-full mx-auto hidden my-auto">
+                <div class="p-10 flex flex-col gap-10">
+                    <span class="font-bold text-lg">Which CrystalTomato® product has been clinically proven to treat melasma and pigmentation?</span>
+                    <div class="grid sm:grid-cols-3 gap-5 w-full">
+                        <button value="whitening-supplement" class="removeBlueHighlight select-item-button flex flex-col gap-3 hover:scale-110 transform transition ease-linear duration-100">
+                            <div class="bg-gray-200 shadow flex aspect-square rounded flex items-center justify-center">
+                                <img src="https://cdn.shopify.com/s/files/1/0509/6079/3772/products/image-1-9.png?v=1636524632" class="aspect-square w-full rounded object-cover"/>
+                            </div> 
+                            <span class="text-gray-500 font-bold text-center text-sm">Whitening Supplement</span>
+                        </button>
+                        <button value="beyond-sun-protection" class="removeBlueHighlight select-item-button flex flex-col gap-3 hover:scale-110 transform transition ease-linear duration-100">
+                            <div class="bg-gray-200 shadow flex aspect-square rounded flex items-center justify-center">
+                                <img src="https://cdn.shopify.com/s/files/1/0509/6079/3772/products/beyond.jpg?v=1653468581" class="aspect-square w-full rounded object-cover"/>
+                            </div> 
+                            <span class="text-gray-500 font-bold text-center text-sm">Beyond Sun Protection</span>
+                        </button>
+                        <button value="skin-clarity" class="removeBlueHighlight select-item-button flex flex-col gap-3 hover:scale-110 transform transition ease-linear duration-100">
+                            <div class="bg-gray-200 shadow flex aspect-square rounded flex items-center justify-center">
+                                <img src="https://cdn.shopify.com/s/files/1/0509/6079/3772/products/image-1.jpg?v=1630045902" class="aspect-square w-full rounded object-cover"/>
+                            </div> 
+                            <span class="text-gray-500 font-bold text-center text-sm">Skin Clarity Cream</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="correct-answer" class="fixed inset-0 w-full h-full flex items-center justify-center h-full hidden">
+        <div class="flex flex-col gap-10 z-20 rounded bg-white max-w-lg w-full p-10 mx-5">
+            <div class="flex flex-col gap-1">
+                <span class="font-bold text-lg">Congratulations!</span>
+                <span class="text-gray-500 text-sm">Apply the discount code for 11% OFF on 11 Nov 2022.</span>
+            </div>
+            <div class="flex flex-col gap-10 hover:scale-110 transform transition ease-linear duration-100">
+                <div class="px-6 py-2 bg-gray-200 rounded flex items-center justify-center text-gray-500 uppercase">
+                    <span>1111 DISCOUNT CODE</span>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <a href="https://buy.crystaltomato.com/" target="_blank" class="bg-gray-500 w-full text-white rounded px-6 py-2 uppercase hover:bg-gray-700 text-center">Shop Sale</a>
+                    <span class="text-gray-500 text-sm">Tap to automatically apply the discount code and shop now</span>
+                </div>
+            </div>
+        </div>
+        <div class="fixed bg-black opacity-50 w-full h-full z-10"></div>
+    </div>
+    
+    <div id="incorrect-answer" class="fixed inset-0 w-full h-full flex items-center justify-center h-full hidden">
+        <div class="flex flex-col gap-10 z-20 rounded bg-white max-w-lg w-full p-10 mx-5">
+            <span class="font-bold text-lg">Incorrect Answer!</span>
+            <div class="flex flex-col gap-3 hover:scale-110 transform transition ease-linear duration-100">
+                <span class="text-gray-500 font-bold text-center text-sm">Hint: Some hint that leads user to the answer or something else here.</span>
+            </div>
+            <button id="try-again-button" class="bg-gray-500 w-full text-white rounded px-6 py-2 uppercase hover:bg-gray-700">Try again</button>
+        </div>
+        
+        <div class="fixed bg-black opacity-50 w-full h-full z-10"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
+
+<style>
+    .removeBlueHighlight{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+    }
+</style>
